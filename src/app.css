@@ -1,0 +1,187 @@
+.modal_main {
+	overflow-y: hidden !important;
+}
+
+.back {
+	background-color: #eff0f0 !important;
+}
+
+element.style {
+	box-shadow: 4px 4px 4px 4px rgb(0 0 0 / 25%);
+}
+
+.content_oveflow {
+	overflow-y: hidden !important;
+}
+
+.m_l_{
+	margin-left: 135px;
+}
+
+.modal-dialog {
+	width: 75% !important;
+	height: 75% !important;
+}
+
+.dialog{
+	width: 30%!important;
+
+}
+
+.btn {
+	border-radius: 0 !important;
+	/* box-shadow: -6px -6px 5px rgb(255, 255, 255, 1), 4px 4px 15px rgb(69, 74, 82) !important; */
+	box-shadow: 5px 5px 13px #2b2c2d, -5px -5px 5px #ffffff;
+}
+
+.shadow {
+	/* box-shadow: -8px -8px 0px rgb(255, 255, 255, 1), 4px 4px 10px rgba(56, 60, 68, 1) !important; */
+	box-shadow: 5px 5px 13px #2b2c2d, -5px -5px 5px #ffffff!important;
+}
+
+.inp{
+	border: none!important;
+	box-shadow: inset 6px 6px 6px rgba(151, 167, 195, 0.61);
+	background-color: #E0E5EC;
+}
+
+.card{
+	border-radius: 0!important;
+	border: none!important;
+	/* box-shadow: -10px -10px 8px rgb(255, 255, 255, 1), 4px 4px 15px rgb(69, 74, 82) !important; */
+	box-shadow: 5px 5px 13px #2b2c2d, -5px -5px 5px #ffffff!important;
+}
+
+.modal-content {
+	max-width: 100% !important;
+	max-height: 100% !important;
+	overflow-x: hidden !important;
+	overflow-y: hidden !important;
+	border: none !important;
+	border-radius: 0 !important;
+	box-shadow: 5px;
+}
+
+.p_50 {
+	padding: 50px !important;
+}
+
+.content_oveflow {
+	overflow-y: scroll;
+	padding: 15px;
+}
+
+.my_icon {
+	height: 100px;
+	width: 100px;
+}
+
+.accordion-button {
+	font-weight: bold;
+}
+
+.accordion-button:hover {
+	color: rgb(29, 154, 154);
+
+}
+
+.mid-color {
+	background-color: rgb(207, 236, 16);
+	padding: 50px 50px 50px 10px;
+	margin-bottom: 50px;
+}
+
+.line {
+	border-left: 2px solid black;
+	height: 110px;
+	margin-left: 80px;
+}
+
+.input {
+	margin: 20px 50px 20px 0px;
+	width: 350px;
+	height: 40px;
+	font-size: 17px;
+	border-top: none;
+	border-right: none;
+	border-left: none;
+}
+
+.help {
+	margin: 50px 0px 20px 10px;
+}
+
+.my-dropdown {
+	width: 100px;
+}
+
+.nav-link:hover {
+	text-decoration: underline;
+}
+
+.mt-google {
+	margin-top: 115px !important;
+	background: black !important;
+	color: white;
+}
+
+.mt-facebook {
+	margin-top: 60px !important;
+}
+
+.google-img {
+	margin-top: -4.8px;
+	height: 33px;
+	width: 30px;
+	background: white;
+}
+
+.facebook-img {
+	margin-top: -4.8px;
+	height: 34px;
+	width: 30px;
+	background: white;
+}
+
+.slash {
+	margin-top: 160px !important;
+	text-align: center;
+}
+
+.slash-img {
+	height: 50px;
+}
+
+.bg-dark1 {
+	background: black;
+}
+
+.sign-in {
+	background: linear-gradient(to right, rgb(46, 47, 61), rgb(113, 204, 175)) !important;
+}
+
+.m_l {
+	margin-left: 110px;
+}
+
+.m_r {
+	margin-right: 110px;
+}
+
+.annexure{
+	box-shadow: inset 6px 6px 6px rgba(151, 167, 195, 0.61);
+	background-color: #E0E5EC;
+}
+
+.vl{
+		border-left: 5px solid rgb(0, 0, 0);
+		height: 100px;
+		margin-top: 20px;
+}
+
+@media screen and (min-width: 576px) {
+	.modal-dialog {
+		max-width: 100% !important;
+		margin: 1.75rem auto;
+	}
+}
