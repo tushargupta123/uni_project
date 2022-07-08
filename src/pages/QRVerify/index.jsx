@@ -1,23 +1,39 @@
+import React, { useEffect, useState } from 'react';
+import { QRCodeSVG } from 'qrcode.react';
+import { signinUser } from "../../Feature/Auth/authSlice";
 import { useSelector } from "react-redux";
-import React, { useState } from "react";
+
 import { useDispatch } from "react-redux";
 import { useNavigate } from "react-router-dom";
-import { signinUser } from "../../Feature/Auth/authSlice";
 
-const Sign_verify = () => {
+
+const QRVerify = () => {
+
     const { selectedType } = useSelector((state) => state.auth);
 
     const dispatch = useDispatch();
     const navigate = useNavigate();
-
     const [formData, setFormData] = useState({
         otp: "",
         type: null,
     });
     const { otp, type } = formData;
 
+    const [qr, setQr] = useState("");
+    useEffect(() => {
+        getOtp();
+    }, []);
+    const getOtp = () => {
+        fetch("http://127.0.0.1:8000/fa2url").then((result) => {
+            result.json().then((res) => {
+                console.log("result from qr", res);
+                setQr(res);
+            })
+        })
+    };
+
     const data = JSON.stringify({
-        "otp": otp
+        "otp":otp
     });
 
     function rel_signup(){
@@ -33,7 +49,7 @@ const Sign_verify = () => {
         if (otp == "") {
             alert("Enter OTP");
         } else {
-            fetch("http://127.0.0.1:8000/verify_email", {
+            fetch("http://127.0.0.1:8000/verify2fa", {
                 method: 'POST',
                 headers: {
                     'Accept': 'application/json',
@@ -42,24 +58,20 @@ const Sign_verify = () => {
                 body: data
             }).then(res => res.json())
                 .then((data) => {
-                    console.log(data);
                     if (data.true){
                     dispatch(signinUser(formData));
-                    navigate("/qr_verify");
-                    }
-                    else if(data.false){
+                    navigate("/");
+                    } else if(data.false){
                         alert("WRONG OTP");
+                    } else {
+                        alert("Max tries Reached. Try again !!");
+                        navigate("/sign-up");
+                        rel_signup();
                     }
-                    // } else {
-                    //     alert("Max tries Reached. Try again !!");
-                    //     navigate("/sign-up");
-                    //     rel_signup();
-                    // }
                 }).catch((err) => {
                     console.log(err);
                 })
         }
-        navigate("/qr_verify");
     };
 
     const onChange = (e) => {
@@ -79,15 +91,19 @@ const Sign_verify = () => {
                             <form onSubmit={submitHandler}>
                                 <div className="card back">
                                     <div className="card-body">
-                                        <h5 className="card-title text-center">EMAIL OTP VERIFICATION</h5>
+                                        <h5 className="card-title text-center">QR OTP VERIFICATION</h5>
                                         <h5 className="text-info mt-5 mb-3">Signing up as Participant</h5>
+                                        <QRCodeSVG
+                                            value={qr}
+                                            style={{ marginLeft: 130 }}
+                                        />
                                         <input
                                             type="text"
                                             name="otp"
                                             value={otp}
                                             onChange={onChange}
                                             placeholder="Enter OTP"
-                                            className="inp p-2 mb-2 w-100"
+                                            className="inp p-2 mb-2 mt-4 w-100"
                                         /><br />
                                         <input type="submit" className="btn btn-dark w-100 mt-4" value="Sign Up" name="Sign Up" id="danger-outlined" autoComplete="off"
                                             onClick={() => {
@@ -108,13 +124,17 @@ const Sign_verify = () => {
                                     <div className="card-body">
                                         <h5 className="card-title text-center">EMAIL OTP VERIFICATION</h5>
                                         <h5 className="text-info mt-5 mb-3">Signing up as Pool</h5>
+                                        <QRCodeSVG
+                                            value={qr}
+                                            style={{ marginLeft: 130 }}
+                                        />
                                         <input
                                             type="text"
                                             name="otp"
                                             value={otp}
                                             onChange={onChange}
                                             placeholder="Enter OTP"
-                                            className="inp p-2 mb-2 w-100"
+                                            className="inp p-2 mb-2 mt-4 w-100"
                                         /><br />
                                         <input type="submit" className="btn btn-dark w-100 mt-4" value="Sign Up" name="Sign Up" id="danger-outlined" autoComplete="off"
                                             onClick={() => {
@@ -136,4 +156,4 @@ const Sign_verify = () => {
     )
 }
 
-export default Sign_verify
+export default QRVerify

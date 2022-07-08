@@ -29,13 +29,11 @@ useEffect(() => {
      console.log("error", err);
    })
   }
+
   return (
+    <div className="back shadow">
     <div className="container">
-      <section>
-        <h1>home main</h1>
-        <button onClick={onTest}>test</button>
-      </section>
-      <section className="row my_50">
+      <section className="row pt-5">
         <div className="col-sm-12 col-md-6 col-lg-5 d-flex flex-column justify-content-center">
           <div className="pt-3"> ALADDIN BY BLACKROCK</div>
           <h1 className="pt-3">GET TO KNOW THE ALADDIN ADVANTAGE</h1>
@@ -149,15 +147,11 @@ useEffect(() => {
                   }`}
                 ></div>
               </div>
-
-              {/* <button type="button" className="btn btn-dark">
-                Learn more about eFront
-              </button> */}
             </div>
           </div>
         </div>
       </section>
-      <section className="my_50">
+      <section className="">
         <div className="row">
           <div className="col-md-6 col-sm-12 d-flex flex-column justify-content-center">
             <div className="h3">
@@ -186,7 +180,7 @@ useEffect(() => {
               </div>
             </div>
           </div>
-          <div className="col-md-6 col-sm-12">
+          <div className="col-md-6 col-sm-12 pb-5">
             <div className="img-block">
               <img
                 src="https://www.blackrock.com/blk-inst-assets/cache-1640697450000/images/media-bin/web/institutional/casestudy.webp"
@@ -197,6 +191,7 @@ useEffect(() => {
           </div>
         </div>
       </section>
+    </div>
     </div>
   );
 }

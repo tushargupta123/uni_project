@@ -14,8 +14,16 @@ element.style {
 	overflow-y: hidden !important;
 }
 
-.m_l_{
-	margin-left: 135px;
+.logo{
+	margin-left: 110px;
+	color: black;
+	text-decoration: none;
+	font-size: 25px;
+	margin-right: 40px;
+}
+
+.logo:hover{
+	color: black;
 }
 
 .modal-dialog {
@@ -31,7 +39,7 @@ element.style {
 .btn {
 	border-radius: 0 !important;
 	/* box-shadow: -6px -6px 5px rgb(255, 255, 255, 1), 4px 4px 15px rgb(69, 74, 82) !important; */
-	box-shadow: 5px 5px 13px #2b2c2d, -5px -5px 5px #ffffff;
+	box-shadow: 5px 5px 13px #2b2c2d, -5px -5px 0px #ffffff;
 }
 
 .shadow {
@@ -164,6 +172,10 @@ element.style {
 	margin-left: 110px;
 }
 
+.m_l_{
+	margin-left: 360px;
+}
+
 .m_r {
 	margin-right: 110px;
 }
@@ -177,6 +189,10 @@ element.style {
 		border-left: 5px solid rgb(0, 0, 0);
 		height: 100px;
 		margin-top: 20px;
+}
+
+.drop{
+	width: 56.8%;
 }
 
 @media screen and (min-width: 576px) {

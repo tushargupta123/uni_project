@@ -125,32 +125,32 @@ function Api() {
         <form action="#">
           <div className="row">
             <div className="col col-sm-12 col-md-12 col-lg-12">
-              <input className="input" type="text" name="firstName"  id="" placeholder="First Name" required/>
-              <input className="input" type="text" name="lastName" id=""  placeholder="Last Name" required/>
-              <input className="input" type="email" name="buisnessEmail" id=""  placeholder="Buisness Email" required/>
+              <input className="input p-2 shadow" type="text" name="firstName"  id="" placeholder="First Name" required/>
+              <input className="input p-2 shadow" type="text" name="lastName" id=""  placeholder="Last Name" required/>
+              <input className="input p-2 shadow" type="email" name="buisnessEmail" id=""  placeholder="Buisness Email" required/>
             </div>
             </div>
             <div className="row">
             <div className="col col-sm-12 col-md-12 col-lg-12">
-              <input className="input" type="text" name="companyName" id=""  placeholder="Company Name" required/>
-              <input className="input" type="text" name="country" id=""  placeholder="Country" required/>
-              <input className="input" type="text" name="phoneNumber" id=""  placeholder="Phone Number" required/>
+              <input className="input p-2 shadow" type="text" name="companyName" id=""  placeholder="Company Name" required/>
+              <input className="input p-2 shadow" type="text" name="country" id=""  placeholder="Country" required/>
+              <input className="input p-2 shadow" type="text" name="phoneNumber" id=""  placeholder="Phone Number" required/>
             </div>
             </div>
             <div className="row">
             <div className="col col-sm-12 col-md-12 col-lg-12">
-              <input className="input" type="text" name="organizationType" id=""  placeholder="Organization Type" required/>
-              <input className="input" type="text" name="interestedIn" id=""  placeholder="Interested In" required/>
-              <input className="input" type="text" name="primaryRole" id=""  placeholder="Primary role" required/>
+              <input className="input p-2 shadow" type="text" name="organizationType" id=""  placeholder="Organization Type" required/>
+              <input className="input p-2 shadow" type="text" name="interestedIn" id=""  placeholder="Interested In" required/>
+              <input className="input p-2 shadow" type="text" name="primaryRole" id=""  placeholder="Primary role" required/>
             </div>
             </div>
             <div className="row">
             <div className="col col-sm-12 col-md-12 col-lg-12">
-              <input className="input" type="text" name="requestType" id=""  placeholder="Request Type" required/>
+              <input className="input p-2 shadow" type="text" name="requestType" id=""  placeholder="Request Type" required/>
              </div>
              </div>
              <div className="row mt-4">
-             <textarea name="help" className="help"  placeholder="How can we help you?" id="" cols="10" rows="3"></textarea>
+             <textarea name="help" className="help p-2 shadow"  placeholder="How can we help you?" id="" cols="10" rows="3"></textarea>
              </div>
           <div className="row">
             <div className="col">

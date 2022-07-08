@@ -1,48 +1,87 @@
 import React, { useState } from "react";
+import { useSelector } from "react-redux";
 import { useDispatch } from "react-redux";
 import { useNavigate } from "react-router-dom";
-import { Navigate } from "react-router-dom";
-import { loginUser } from "../../Feature/Auth/authSlice";
-import { Link } from "react-router-dom";
-import { fetchToken, setToken } from "../../Auth";
-import axios from "axios";
+import { signinUser } from "../../Feature/Auth/authSlice";
 
 function SignUp() {
+  const { selectedType } = useSelector((state) => state.auth);
+
   const dispatch = useDispatch();
   const navigate = useNavigate();
 
   const [formData, setFormData] = useState({
-    email: "",
-    password: "",
+    usernameParticipant: "",
+    passwordParticipant: "",
     type: null,
+    full_nameParticipant: "",
+    usernamePool: "",
+    passwordPool: "",
+    full_namePool: ""
   });
-  const { email, password, type } = formData;
+  const { usernameParticipant, passwordParticipant, type, full_nameParticipant, usernamePool, passwordPool, full_namePool } = formData;
+
+  var data = JSON.stringify({
+    "username": usernameParticipant,
+    "password": passwordParticipant,
+    "full_name": full_nameParticipant
+  });
 
   const submitHandler = (e) => {
     e.preventDefault();
-    dispatch(loginUser(formData));
-    navigate("/sign_verify");
-    // if ((email == "") & (password == "")) {
-    //   return;
-    // } else {
-    //   // make api call to our backend. we'll leave thisfor later
-    //   axios
-    //     .post("http://localhost:8000/login", {
-    //       email: email,
-    //       password: password,
-    //     })
-    //     .then(function (response) {
-    //       console.log(response.data.token, "response.data.token");
-    //       if (response.data.token) {
-    //         setToken(response.data.token);
-    //         dispatch(loginUser(formData));
-    //         navigate("/home");
-    //       }
-    //     })
-    //     .catch(function (error) {
-    //       console.log(error, "error");
-    //     });
-    // }
+    if (type === 'participant') {
+      if ((usernameParticipant == "") || (passwordParticipant == "") || (full_nameParticipant == "")) {
+        alert("Please fill in the above information in PARTICIPANT");
+      } else {
+        var data = JSON.stringify({
+          "username": usernameParticipant,
+          "password": passwordParticipant,
+          "full_name": full_nameParticipant
+        })
+        fetch("http://127.0.0.1:8000/Signup", {
+          method: 'POST',
+          headers: {
+            'Accept': 'application/json',
+            'Content-Type': 'application/json'
+          },
+          body: data
+        }).then(res => res.json())
+          .then((data) => {
+            if (data) {
+              dispatch(signinUser(formData));
+              navigate("/sign_verify");
+            }
+          }).catch((err) => {
+            console.log(err);
+          })
+      }
+    } else if (type === 'pool') {
+      if ((usernamePool == "") || (passwordPool == "") || (full_namePool == "")) {
+        alert("Please fill in the above information in Pool");
+      } else {
+        var data = JSON.stringify({
+          "username": usernamePool,
+          "password": passwordPool,
+          "full_name": full_namePool
+        })
+        fetch("http://127.0.0.1:8000/Signup", {
+          method: 'POST',
+          headers: {
+            'Accept': 'application/json',
+            'Content-Type': 'application/json'
+          },
+          body: data
+        }).then(res => res.json())
+          .then((data) => {
+            if (data) {
+              dispatch(signinUser(formData));
+              navigate("/sign_verify");
+            }
+          }).catch((err) => {
+            console.log(err);
+          })
+      }
+    }
   };
 
   const onChange = (e) => {
@@ -53,31 +92,38 @@ function SignUp() {
   };
   return (
 
-    <div className="back">
+    <div className="back shadow">
       <div className="container">
         <div className="row">
           <div className="col col-sm-12 col-md-6 pt-5 pb-5">
             <form onSubmit={submitHandler}>
-              <div class="card back">
-                <div class="card-body">
-                  <h5 class="card-title text-center text-bold">Participants</h5>
+              <div className="card back">
+                <div className="card-body">
+                  <h5 className="card-title text-center text-bold">Participants</h5>
                   <input
                     type="email"
-                    name="email"
-                    value={email}
+                    name="usernameParticipant"
+                    value={usernameParticipant}
                     onChange={onChange}
                     placeholder="Enter your Email "
                     className="inp p-2 mb-3 mt-3 w-100"
                   /><br />
                   <input
                     type="password"
-                    name="password"
-                    value={password}
+                    name="passwordParticipant"
+                    value={passwordParticipant}
                     onChange={onChange}
                     placeholder="Enter your Password"
                     className="inp p-2 mb-2 w-100"
                   /><br />
-                  <span className="text-dark text-underline" role="button"><u>Forgot password ?</u></span>
+                  <input
+                    type="text"
+                    name="full_nameParticipant"
+                    value={full_nameParticipant}
+                    onChange={onChange}
+                    placeholder="Enter your Full_name"
+                    className="inp p-2 mb-2 w-100"
+                  /><br />
                   <input type="submit" className="btn btn-dark w-100 mt-4" value="Sign Up" name="Sign In" id="danger-outlined" autoComplete="off"
                     onClick={() =>
                       setFormData({
@@ -92,26 +138,33 @@ function SignUp() {
           </div>
           <div className="col col-sm-12 col-md-6 pt-5 pb-5">
             <form onSubmit={submitHandler}>
-              <div class="card back">
-                <div class="card-body">
-                  <h5 class="card-title text-center text-bold">Pool</h5>
+              <div className="card back">
+                <div className="card-body">
+                  <h5 className="card-title text-center text-bold">Pool</h5>
                   <input
                     type="email"
-                    name="email"
-                    value={email}
+                    name="usernamePool"
+                    value={usernamePool}
                     onChange={onChange}
                     placeholder="Enter your Email "
                     className="inp p-2 mb-3 mt-3 w-100"
                   /><br />
                   <input
                     type="password"
-                    name="password"
-                    value={password}
+                    name="passwordPool"
+                    value={passwordPool}
                     onChange={onChange}
                     placeholder="Enter your Password"
                     className="inp p-2 mb-2 w-100"
                   /><br />
-                  <span className="text-dark text-underline" role="button"><u>Forgot password ?</u></span>
+                  <input
+                    type="text"
+                    name="full_namePool"
+                    value={full_namePool}
+                    onChange={onChange}
+                    placeholder="Enter your Full_name"
+                    className="inp p-2 mb-2 w-100"
+                  /><br />
                   <input type="submit" className="btn btn-dark w-100 mt-4" value="Sign Up" name="Sign In" id="danger-outlined" autoComplete="off"
                     onClick={() =>
                       setFormData({

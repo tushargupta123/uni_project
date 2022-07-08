@@ -38,6 +38,23 @@ export const loginUser = createAsyncThunk(
     }
   }
 );
+
+export const signinUser = createAsyncThunk(
+  "auth/sign-up",
+  async (data, thunkAPI) => {
+    try {
+      return authService.signinUser(data);
+    } catch (error) {
+      const message =
+        (error.response &&
+          error.response.data &&
+          error.response.data.message) ||
+        error.message ||
+        error.toString();
+      return thunkAPI.rejectWithValue(message);
+    }
+  }
+);
 export const authSlice = createSlice({
   name: "auth",
   initialState,
@@ -46,6 +63,9 @@ export const authSlice = createSlice({
       state.selectedType = action.payload;
     });
     builder.addCase(loginUser.fulfilled, (state, action) => {
+      state.selectedType = action.payload;
+    });
+    builder.addCase(signinUser.fulfilled, (state, action) => {
       state.selectedType = action.payload;
     });
   },

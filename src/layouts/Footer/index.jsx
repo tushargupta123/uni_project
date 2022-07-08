@@ -285,7 +285,7 @@ function Footer() {
                 name="fName"
                 value={fName}
                 onChange={onChange}
-                className="w-100"
+                className="w-100 inp p-3"
                 placeholder="First Name"
               />
             </div>
@@ -295,7 +295,7 @@ function Footer() {
                 name="lName"
                 value={lName}
                 onChange={onChange}
-                className="w-100"
+                className="w-100 inp p-3"
                 placeholder="Last Name"
               />
             </div>
@@ -305,7 +305,7 @@ function Footer() {
                 name="email"
                 value={email}
                 onChange={onChange}
-                className="w-100"
+                className="w-100 inp p-3"
                 placeholder="Business Email"
               />
             </div>
@@ -315,7 +315,7 @@ function Footer() {
                 name="companyName"
                 value={companyName}
                 onChange={onChange}
-                className="w-100"
+                className="w-100 inp p-3"
                 placeholder="Company Name"
               />
             </div>
@@ -325,12 +325,12 @@ function Footer() {
                 name="phoneNumber"
                 value={phoneNumber}
                 onChange={onChange}
-                className="w-100"
+                className="w-100 inp p-3"
                 placeholder="Phone number"
               />
             </div>
             <div className="col-12 d-flex justify-content-center align-items-center my-2">
-              <input type="submit" value="Submit" className="px-3 py-2" />
+              <input type="submit" value="Submit" className="px-3 py-2 back text-black shadow" />
             </div>
           </div>
         </form>

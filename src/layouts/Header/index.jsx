@@ -1,5 +1,5 @@
 import React from "react";
-import { Container, Nav, Navbar } from "react-bootstrap";
+import { Nav, Navbar } from "react-bootstrap";
 import { useSelector } from "react-redux";
 import { Link } from "react-router-dom";
 
@@ -7,8 +7,8 @@ function Header() {
   const { selectedType } = useSelector((state) => state.auth);
   return (
     <div>
-      <Navbar bg="light" expand="lg" className="shadow">
-        <Navbar.Brand className="m_l_" href="#home">LLC</Navbar.Brand>
+      <Navbar bg="light" expand="lg" className="shadow" >
+        <Link className="logo" to="/">LLC</Link>
         <Navbar.Toggle aria-controls="basic-navbar-nav" />
         <Navbar.Collapse
           id="basic-navbar-nav"
@@ -22,8 +22,7 @@ function Header() {
               About
             </Link>
 
-            {/* pool */}
-            {selectedType === "pool" ? (
+            {selectedType === "pool" || selectedType === "participant" ? (
               <>
                 <Link to="/api" className="nav-link">
                   API
@@ -34,29 +33,22 @@ function Header() {
                 <Link to="/Dashboard" className="nav-link">
                   Dashboard
                 </Link>
-                <Link to="/payment" className="nav-link">
-                  Payment
+                <Link to="/order" className="nav-link">
+                  Order
                 </Link>
                 <Link to="/escrow" className="nav-link">
                   Escrow
                 </Link>
-              </>
-            ) : null}
-
-            {/* participant */}
-            {selectedType === "participant" ? (
-              <>
-                <Link to="/payment" className="nav-link">
-                  Payment
+                <Link to="/escrow_account" className="nav-link">
+                  Escrow account status
                 </Link>
-                <Link to="/verification" className="nav-link">
-                  Verification
+                <Link to="/pool_participant" className="nav-link">
+                  Pool and Participants
                 </Link>
-                <Link to="/pool_articipant" className="nav-link">
-                  Pools and Participants
-                </Link>
-                <Link to="/pleging" className="nav-link">
-                  Pleging
+                <Link to="/" type="button" className="btn btn-dark m_l_" onClick={() => {
+                  localStorage.removeItem("temitope");
+                }} >
+                  Sign Out
                 </Link>
               </>
             ) : null}

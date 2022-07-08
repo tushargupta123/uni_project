@@ -1,7 +1,7 @@
 import React from "react";
 import { Route, Routes } from "react-router-dom";
 import Home from "../../pages/Home";
-import Payment from "../../pages/Payment";
+import Order from "../../pages/Order";
 import Verification from "../../pages/Verification";
 import PoolParticipant from "../../pages/PoolParticipant";
 import Api from "../../pages/Api";
@@ -14,7 +14,9 @@ import SignUp from "../../pages/SignUp";
 import {RequireToken} from "../../Auth";
 import Home_main from "../../pages/Home_main";
 import Sign_verify from "../../pages/Sign_verify";
-import Escrow from "../../pages/Escrow";
+import Escrow_main from "../../pages/Escrow_main";
+import Escrow_account from "../../pages/Escrow_account";
+import QRVerify from "../../pages/QRVerify";
 
 function Content() {
   return (
@@ -22,9 +24,9 @@ function Content() {
       <Routes>
         <Route path="/home" element={<RequireToken><Home_main /></RequireToken>} />
         <Route path="/" element={<Home/>} />
-        <Route path="/payment" element={<Payment />} />
+        <Route path="/order" element={<Order />} />
         <Route path="/verification" element={<Verification />} />
-        <Route path="/pool_articipant" element={<PoolParticipant />} />
+        <Route path="/pool_participant" element={<PoolParticipant />} />
         <Route path="/Api" element={<Api />} />
         <Route path="/Contact" element={<Contact />} />
         <Route path="/Dashboard" element={<Dashboard />} />
@@ -33,7 +35,9 @@ function Content() {
         <Route path="*" element={<Invalid />} />
         <Route path="/sign-up" element={<SignUp />} />
         <Route path="/sign_verify" element={<Sign_verify/>} />
-        <Route path="/escrow" element={<Escrow/>} />
+        <Route path="/escrow" element={<Escrow_main/>} />
+        <Route path="/escrow_account" element={<Escrow_account/>} />
+        <Route path="/qr_verify" element={<QRVerify/>} />
       </Routes>
     </div>
   );
